@@ -1,7 +1,7 @@
 import FoodCard from "./ul/FoodCard";
-import item01 from "../assests/image/food01.png";
-import item02 from "../assests/image/food02.png";
-import item03 from "../assests/image/food03.png";
+import item01 from "../assets/image/food01.png";
+import item02 from "../assets/image/food02.png";
+import item03 from "../assets/image/food03.png";
 import ButtonFill from "./ul/ButtonFill";
 
 const BestSeller = () => {

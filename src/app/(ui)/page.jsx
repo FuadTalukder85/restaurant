@@ -1,9 +1,11 @@
 import BestSeller from "../../components/BestSeller";
+import Testimonials from "../../components/Testimonials";
 
 const Home = () => {
   return (
-    <div className="">
+    <div>
       <BestSeller />
+      <Testimonials />
     </div>
   );
 };
