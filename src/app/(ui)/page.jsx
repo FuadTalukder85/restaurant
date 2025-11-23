@@ -1,7 +1,11 @@
-import React from "react";
+import BestSeller from "../../components/BestSeller";
 
-const page = () => {
-  return <div className="">this is home page</div>;
+const Home = () => {
+  return (
+    <div className="">
+      <BestSeller />
+    </div>
+  );
 };
 
-export default page;
+export default Home;

@@ -3,11 +3,14 @@
 :root {
   --primary: #880808;
   --secondary: #333333;
+  --gray: #bababa;
+  /* --3xl: 1920px; */
 }
 
 @theme inline {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
+  --color-gray: var(--gray);
   --font-sans: var(--font-Poppins);
 }
 
