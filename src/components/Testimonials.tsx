@@ -57,7 +57,7 @@ const Testimonials = () => {
   };
 
   return (
-    <div className="max-w-[1300px] mx-auto flex flex-col-reverse lg:flex-row items-center justify-between w-full gap-10 mt-9 overflow-hidden px-2 md:px-0">
+    <div className="max-w-[740px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1300px] mx-auto flex flex-col-reverse lg:flex-row items-center justify-between w-full gap-10 mt-9 overflow-hidden px-2 md:px-0">
       {/* left part */}
       <div className="w-full lg:w-1/2">
         <h1 className="text-black text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-4 mt-16 md:mt-0">

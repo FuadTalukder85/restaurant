@@ -19,7 +19,7 @@ const TeamMember = () => {
       }}
     >
       <div className="absolute inset-0 bg-[#AD1519D9] z-0" />
-      <div className="max-w-[1300px] z-auto mx-auto  lg:pt-12 lg:pb-44 relative">
+      <div className="max-w-[740px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1300px]  mx-auto  lg:pt-12 lg:pb-44 relative">
         {/* section content */}
         <div className="text-center mt-16 py-5">
           <div className="md:hidden py-16"></div>
@@ -35,7 +35,7 @@ const TeamMember = () => {
         </div>
 
         {/* team members */}
-        <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-3 absolute justify-center -mt-20 md:mt-14">
+        <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-3 absolute justify-center -mt-20 sm:mt-96 md:mt-14">
           {members.map((member, index) => (
             <div key={index} className="bg-white shadow px-2 md:px-0">
               <Image

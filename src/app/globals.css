@@ -52,7 +52,7 @@ body {
 }
 
 /* Responsive for smaller devices (e.g. max-width: 768px) */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 758px) {
   .slick-dots {
     width: 100% !important;
     top: 250px;
