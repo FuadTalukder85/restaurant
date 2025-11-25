@@ -6,16 +6,17 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
-import { createItem, getItems } from "@/services/item.service";
+import { createItem } from "@/services/item.service";
 import toast from "react-hot-toast";
+import { getCat } from "@/services/cat.service";
 
 const FoodModal = ({ onClose }) => {
   const [open, setOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["item"],
-    queryFn: getItems,
+    queryKey: ["cat"],
+    queryFn: getCat,
   });
   const categories = Array.from(new Set(data?.map((i) => i.category)));
 

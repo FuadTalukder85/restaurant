@@ -5,8 +5,8 @@ const FoodCard = ({ image, itemName, category, price }) => {
   return (
     <div className="bg-white rounded-lg shadow w-full pb-8">
       <Image
-        src={image}
-        alt={image}
+        src={image || "/img.png"}
+        alt={image || "Food Image"}
         width={300}
         height={200}
         className="w-full object-cover"

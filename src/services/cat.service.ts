@@ -8,5 +8,5 @@ export const createCat = async (payload: CatType) => {
 
 export const getCat = async () => {
   const res = await api.get("/cat");
-  return res.data;
+  return res.data.data;
 };
