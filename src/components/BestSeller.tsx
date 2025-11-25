@@ -1,10 +1,16 @@
-import FoodCard from "./ul/FoodCard";
+"use client";
+import FoodCard from "./ui/FoodCard";
 import item01 from "../assets/image/food01.png";
 import item02 from "../assets/image/food02.png";
 import item03 from "../assets/image/food03.png";
-import ButtonFill from "./ul/ButtonFill";
+import ButtonFill from "./ui/ButtonFill";
+import { useState } from "react";
+import FoodModal from "./ui/FoodModal";
+import CategoryModal from "./ui/CategoryModal";
 
 const BestSeller = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [showCatModal, setShowCatModal] = useState(false);
   const category = ["All", "breakfast", "lunch", "dinner"];
   return (
     <div className="max-w-[740px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1300px] mx-auto mt-10 lg:mt-24 2xl:mt-36">
@@ -31,8 +37,11 @@ const BestSeller = () => {
           ))}
         </div>
         <div className="flex gap-1 md:gap-3 text-[7px] lg:text-xl 2xl:text-3xl">
-          <ButtonFill name="Add Food" />
-          <ButtonFill name="Add Category" />
+          <ButtonFill name="Add Food" onClick={() => setShowModal(true)} />
+          <ButtonFill
+            name="Add Category"
+            onClick={() => setShowCatModal(true)}
+          />
         </div>
       </div>
       {/* food card */}
@@ -56,6 +65,8 @@ const BestSeller = () => {
           price="230"
         />
       </div>
+      {showModal && <FoodModal onClose={() => setShowModal(false)} />}
+      {showCatModal && <CategoryModal onClose={() => setShowCatModal(false)} />}
     </div>
   );
 };
