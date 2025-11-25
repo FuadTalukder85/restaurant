@@ -1,12 +1,25 @@
+import { createCat } from "@/services/cat.service";
+import { CatType } from "@/types/cat.types";
 import { useForm, SubmitHandler } from "react-hook-form";
+import toast from "react-hot-toast/headless";
 
 const CategoryModal = ({ onClose }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<CatType>();
+  const onSubmit: SubmitHandler<CatType> = async (data) => {
+    try {
+      const createdCat = await createCat(data);
+      console.log("Cat created:", createdCat);
+      toast.success("Category added successfully!", { position: "top-right" });
+      onClose();
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to add cat!", { position: "top-right" });
+    }
+  };
 
   return (
     <>
@@ -23,8 +36,12 @@ const CategoryModal = ({ onClose }) => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <input
                 placeholder="Name"
+                {...register("category", { required: true })}
                 className="w-full px-4 py-2.5 border border-gray-400 text-sm rounded-full bg-[#686868] text-white placeholder-gray-100 outline-none"
               />
+              {errors.category && (
+                <p className="text-red-400 text-sm">Category is required</p>
+              )}
               <button className="w-full text-base bg-[#D3332F] hover:bg-red-700 px-4 py-2 rounded-full text-white transition disabled:opacity-50">
                 Save
               </button>
