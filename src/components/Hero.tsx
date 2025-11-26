@@ -60,7 +60,7 @@ const Hero = () => {
           <h5 className="hidden md:block text-3xl font-bold text-white">
             RESTAURANT
           </h5>
-          <div className="relative mx-auto">
+          <div className="relative mx-auto md:mx-0">
             <div>
               <input
                 type="text"
