@@ -75,15 +75,21 @@ const BestSeller = () => {
       </div>
       {/* food card */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 mt-5 md:mt-10 xl:mt-16 px-2 md:px-0">
-        {filteredItems?.map((item: ItemType, index: number) => (
-          <FoodCard
-            key={index}
-            image={item.image}
-            itemName={item.item_name}
-            category={item.category}
-            price="230"
-          />
-        ))}
+        {filteredItems?.length === 0 ? (
+          <p className="col-span-full text-center text-gray-500">
+            No items found.
+          </p>
+        ) : (
+          filteredItems?.map((item: ItemType, index: number) => (
+            <FoodCard
+              key={index}
+              image={item.image}
+              itemName={item.item_name}
+              category={item.category}
+              price="230"
+            />
+          ))
+        )}
       </div>
       {showModal && <FoodModal onClose={() => setShowModal(false)} />}
       {showCatModal && <CategoryModal onClose={() => setShowCatModal(false)} />}
