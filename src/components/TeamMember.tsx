@@ -11,15 +11,15 @@ const members = [
 const TeamMember = () => {
   return (
     <section
-      className="relative -mt-0.5"
+      className="relative mt-16 md:-mt-0.5 py-4 md:py-0"
       style={{
         backgroundImage: `url(https://i.postimg.cc/TPMsJkCz/unsplash-Oz-BLe-Eg1mg.png)`,
-        backgroundSize: "cover",
+        backgroundSize: "contain",
         backgroundPosition: "center",
       }}
     >
       <div className="absolute inset-0 bg-[#AD1519D9] z-0" />
-      <div className="max-w-[740px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1300px]  mx-auto  lg:pt-12 lg:pb-44 relative">
+      <div className="max-w-[740px] lg:max-w-[1000px] xl:max-w-[1200px] 2xl:max-w-[1300px] mx-auto lg:pt-12 lg:pb-44 relative">
         {/* section content */}
         <div className="text-center mt-16 py-5">
           <div className="md:hidden py-16"></div>
@@ -47,10 +47,12 @@ const TeamMember = () => {
               />
 
               <div className="text-center py-3.5">
-                <h1 className="text-xl font-black text-[#4F4F4F]">
+                <h1 className="text-sm md:text-xl font-black text-[#4F4F4F]">
                   {member?.name}
                 </h1>
-                <p className="text-[#828282] pt-1">{member?.role}</p>
+                <p className="text-xs md:text-base text-[#828282] pt-1">
+                  {member?.role}
+                </p>
               </div>
             </div>
           ))}

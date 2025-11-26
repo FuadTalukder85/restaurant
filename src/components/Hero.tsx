@@ -7,6 +7,8 @@ import menu01 from "../assets/image/item01.png";
 import menu02 from "../assets/image/item02.png";
 import menu03 from "../assets/image/item03.png";
 import menu04 from "../assets/image/item04.png";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 
 const Hero = () => {
   const menuImages = [menu01, menu02, menu03, menu04];
@@ -35,7 +37,7 @@ const Hero = () => {
 
   return (
     <motion.div
-      className="bg-[#880808] relative overflow-hidden rounded-b-md"
+      className="bg-[#880808] relative overflow-hidden rounded-b-2xl"
       initial={{ backgroundColor: bgColors[activeIndex] }}
       animate={{ backgroundColor: bgColors[activeIndex] }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -47,7 +49,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         />
       </motion.div>
-      <div className="max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1920px] relative mx-auto z-50 py-8 md:py-14 px-5 xl:px-10 2xl:px-14">
+      <div className="md:max-w-3xl lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[1920px] relative mx-auto z-50 pt-10 pb-28 md:py-14 px-5 xl:px-10 2xl:px-14">
         {/* Search */}
         <motion.div
           initial={{ y: -40, opacity: 0 }}
@@ -58,14 +60,14 @@ const Hero = () => {
           <h5 className="hidden md:block text-3xl font-bold text-white">
             RESTAURANT
           </h5>
-          <div className="relative mx-auto md:mx-0">
+          <div className="relative mx-auto">
             <div>
               <input
                 type="text"
                 placeholder="Search...."
-                className="bg-white text-black font-normal text-base py-2 px-10 rounded-2xl w-[343px] md:w-lg xl:w-2xl 2xl:w-[821px]"
+                className="bg-white placeholder-gray-900 font-semibold text-base py-2 px-10 md:px-16 rounded-md md:rounded-2xl w-full md:w-lg xl:w-2xl 2xl:w-[821px]"
               />
-              <span className="absolute top-2.5 left-2.5 text-[#414141] text-2xl">
+              <span className="absolute top-2.5 left-2 md:left-5 text-[#414141] text-2xl">
                 <CiSearch />
               </span>
             </div>
@@ -79,9 +81,9 @@ const Hero = () => {
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
-            className="space-y-6"
+            className="space-y-3 md:space-y-6"
           >
-            <h1 className="text-[45px] md:text-6xl xl:text-8xl px-10 md:px-0 text-white">
+            <h1 className="text-[45px] md:text-6xl xl:text-8xl px-7 md:px-0 text-white">
               BREAKFAST
             </h1>
             <p className="px-7 md:px-0 lg:w-lg xl:w-2xl 2xl:w-4xl text-base md:text-xl font-normal 2xl:font-bold text-white">
@@ -101,31 +103,56 @@ const Hero = () => {
               {/* full text */}
               <span className="hidden md:block">{fullText}</span>
             </p>
+            {/* mobile slide start */}
+            <div className="absolute md:hidden flex items-center justify-center mt-2">
+              <button
+                onClick={() =>
+                  handleClick(
+                    activeIndex === 0 ? menuImages.length - 1 : activeIndex - 1
+                  )
+                }
+                className="bg-[#d8d3d349] backdrop-blur-md text-white p-3 text-xl rounded-full"
+              >
+                <IoIosArrowBack />
+              </button>
+              <motion.div
+                key={`active-${activeIndex}`}
+                className=""
+                initial={
+                  direction
+                    ? { opacity: 0, x: 200, y: -200, rotate: 90 }
+                    : { opacity: 0, x: -200, y: 200, rotate: -90 }
+                }
+                animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.9, ease: "easeInOut" }}
+                style={{
+                  originX: 1,
+                  originY: 0.5,
+                  zIndex: 2,
+                }}
+              >
+                <Image
+                  className=""
+                  src={menuImages[activeIndex]}
+                  alt={`active-${activeIndex}`}
+                  height={240}
+                  width={240}
+                />
+              </motion.div>
+              <button
+                onClick={() =>
+                  handleClick(
+                    activeIndex === menuImages.length - 1 ? 0 : activeIndex + 1
+                  )
+                }
+                className="bg-[#d8d3d349] backdrop-blur-md text-white p-3 text-xl rounded-full"
+              >
+                <IoIosArrowForward />
+              </button>
+            </div>
 
-            <motion.div
-              key={`active-${activeIndex}`}
-              className="absolute md:hidden top-105 right-0"
-              initial={
-                direction
-                  ? { opacity: 0, x: 200, y: -200, rotate: 90 }
-                  : { opacity: 0, x: -200, y: 200, rotate: -90 }
-              }
-              animate={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.9, ease: "easeInOut" }}
-              style={{
-                originX: 1,
-                originY: 0.5,
-                zIndex: 2,
-              }}
-            >
-              <Image
-                src={menuImages[activeIndex]}
-                alt={`active-${activeIndex}`}
-                height={950}
-                width={650}
-              />
-            </motion.div>
+            {/* mobile slide end*/}
             {/* items */}
             <div className="flex gap-4">
               {menuImages.map((img, index) => (
@@ -134,7 +161,7 @@ const Hero = () => {
                   onClick={() => handleClick(index)}
                   whileTap={{ scale: 0.95 }}
                   whileHover={{ scale: 1.05 }}
-                  className="cursor-pointer mt-96 md:mt-0"
+                  className="cursor-pointer mt-72 md:mt-0"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 + index * 0.2, duration: 0.4 }}
@@ -184,7 +211,7 @@ const Hero = () => {
                     zIndex: 1,
                   }}
                 >
-                  <div className="relative w-[650px] h-[650px] sm:w-[650px] sm:h-[650px] lg:w-[450px] lg:h-[450px] xl:w-[550px] xl:h-[550px] 2xl:w-[650px] 2xl:h-[650px]">
+                  <div className="relative w-[300px] h-[300px] sm:w-[650px] sm:h-[650px] lg:w-[450px] lg:h-[450px] xl:w-[550px] xl:h-[550px] 2xl:w-[650px] 2xl:h-[650px]">
                     <Image
                       src={menuImages[activeIndex]}
                       alt={`active-${activeIndex}`}
@@ -211,7 +238,7 @@ const Hero = () => {
                   zIndex: 2,
                 }}
               >
-                <div className="relative w-[650px] h-[650px] sm:w-[650px] sm:h-[650px] lg:w-[450px] lg:h-[450px] xl:w-[550px] xl:h-[550px] 2xl:w-[650px] 2xl:h-[650px]">
+                <div className="relative w-[300px] h-[300px] sm:w-[650px] sm:h-[650px] lg:w-[450px] lg:h-[450px] xl:w-[550px] xl:h-[550px] 2xl:w-[650px] 2xl:h-[650px]">
                   <Image
                     src={menuImages[activeIndex]}
                     alt={`active-${activeIndex}`}

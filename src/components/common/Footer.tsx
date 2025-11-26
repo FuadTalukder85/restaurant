@@ -26,16 +26,16 @@ const Footer = () => {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12">
             <div className="lg:col-span-3 space-y-4">
               <h3 className="text-2xl md:text-[32px] font-bold">RESTAURANT</h3>
-              <p className="text-base md:text-lg">
+              <p className="text-base md:text-lg pr-10 md:pr-0">
                 Subscribe our newsletter and get discount 25% off
               </p>
               <div className="space-y-4">
                 {/* email */}
-                <div className="flex h-10 rounded-lg overflow-hidden bg-white max-w-[300px]">
+                <div className="flex h-10 rounded-lg overflow-hidden md:max-w-[300px]">
                   <input
                     type="email"
                     placeholder="Enter Your Email"
-                    className="px-4 py-2 text-black placeholder:text-gray-500 focus:outline-none w-full"
+                    className="px-4 py-2 bg-white text-black placeholder:text-gray-500 focus:outline-none w-full"
                   />
                   <button className="bg-[#A52A2A] hover:bg-[#880808] px-4 flex items-center justify-center transition-colors rounded-r-md">
                     <FaPaperPlane className="text-white text-lg" />
@@ -59,7 +59,9 @@ const Footer = () => {
               <div className="space-y-4 text-sm md:text-base">
                 <div className="flex items-start gap-3">
                   <MapPin className="size-5 md:size-6 mt-1 shrink-0" />
-                  <p>3517 W. Gray St. Utica, Pennsylvania 57867</p>
+                  <p className="pr-10 md:pr-0">
+                    3517 W. Gray St. Utica, Pennsylvania 57867
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="size-5 md:size-6 shrink-0" />
@@ -99,7 +101,7 @@ const Footer = () => {
             </div>
 
             {/* image gallery */}
-            <div className="lg:col-span-3 space-y-6">
+            <div className="hidden md:block lg:col-span-3 space-y-6">
               <h3 className="text-xl font-bold">Instagram Gallery</h3>
               <div className="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-3 gap-1">
                 {instagramPhotos.map((photo, index) => (
