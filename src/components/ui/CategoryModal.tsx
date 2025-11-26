@@ -12,8 +12,7 @@ const CategoryModal = ({ onClose }: onCloseProps) => {
   } = useForm<CatType>();
   const onSubmit: SubmitHandler<CatType> = async (data) => {
     try {
-      const createdCat = await createCat(data);
-      console.log("Cat created:", createdCat);
+      await createCat(data);
       toast.success("Category added successfully!", { position: "top-right" });
       onClose();
     } catch (err) {
