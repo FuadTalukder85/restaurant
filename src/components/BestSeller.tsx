@@ -7,16 +7,18 @@ import CategoryModal from "./ui/CategoryModal";
 import { useQuery } from "@tanstack/react-query";
 import { getCat } from "@/services/cat.service";
 import { getItems } from "@/services/item.service";
+import { ItemType } from "@/types/item.types";
+import { CatType } from "@/types/cat.types";
 
 const BestSeller = () => {
   const [showModal, setShowModal] = useState(false);
   const [showCatModal, setShowCatModal] = useState(false);
   const [activeCat, setActiveCat] = useState("All");
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery<CatType[]>({
     queryKey: ["cat"],
     queryFn: getCat,
   });
-  const { data: items } = useQuery({
+  const { data: items } = useQuery<ItemType[]>({
     queryKey: ["item"],
     queryFn: getItems,
   });
@@ -65,7 +67,7 @@ const BestSeller = () => {
       </div>
       {/* food card */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6 mt-5 md:mt-10 xl:mt-16 px-2 md:px-0">
-        {filteredItems?.map((item, index) => (
+        {filteredItems?.map((item: ItemType, index: number) => (
           <FoodCard
             key={index}
             image={item.image}

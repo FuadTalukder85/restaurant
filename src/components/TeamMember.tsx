@@ -11,7 +11,7 @@ const members = [
 const TeamMember = () => {
   return (
     <section
-      className="relative -mt-[2px]"
+      className="relative -mt-0.5"
       style={{
         backgroundImage: `url(https://i.postimg.cc/TPMsJkCz/unsplash-Oz-BLe-Eg1mg.png)`,
         backgroundSize: "cover",

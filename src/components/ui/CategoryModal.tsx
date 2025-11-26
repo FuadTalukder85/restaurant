@@ -1,9 +1,10 @@
 import { createCat } from "@/services/cat.service";
 import { CatType } from "@/types/cat.types";
+import { onCloseProps } from "@/types/type";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast/headless";
 
-const CategoryModal = ({ onClose }) => {
+const CategoryModal = ({ onClose }: onCloseProps) => {
   const {
     register,
     handleSubmit,

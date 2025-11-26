@@ -1,12 +1,17 @@
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
-
-const FoodCard = ({ image, itemName, category, price }) => {
+export type CardType = {
+  image: string | File;
+  itemName: string;
+  category: string;
+  price: number | string;
+};
+const FoodCard = ({ image, itemName, category, price }: CardType) => {
   return (
     <div className="bg-white rounded-lg shadow w-full pb-8">
       <Image
-        src={image || "/img.png"}
-        alt={image || "Food Image"}
+        src={typeof image === "string" ? image : URL.createObjectURL(image)}
+        alt={itemName}
         width={300}
         height={200}
         className="w-full object-cover"

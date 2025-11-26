@@ -9,16 +9,23 @@ import axios from "axios";
 import { createItem } from "@/services/item.service";
 import toast from "react-hot-toast";
 import { getCat } from "@/services/cat.service";
+import { onCloseProps } from "@/types/type";
+export type CatType = {
+  _id: string;
+  category: string;
+};
 
-const FoodModal = ({ onClose }) => {
+const FoodModal = ({ onClose }: onCloseProps) => {
   const [open, setOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<CatType[]>({
     queryKey: ["cat"],
     queryFn: getCat,
   });
-  const categories = Array.from(new Set(data?.map((i) => i.category)));
+  const categories: string[] = Array.from(
+    new Set(data?.map((i) => i.category) || [])
+  );
 
   const {
     register,
@@ -63,7 +70,7 @@ const FoodModal = ({ onClose }) => {
       await createItem(payload);
       toast.success("Item added successfully!", { position: "top-right" });
       onClose();
-    } catch (err: any) {
+    } catch (err) {
       console.error("Failed to post item:", err);
       toast.error("Failed to add item!", { position: "top-right" });
     } finally {
@@ -91,11 +98,6 @@ const FoodModal = ({ onClose }) => {
               {errors.item_name && (
                 <p className="text-red-400 text-sm">Food Name is required</p>
               )}
-              {/* <input
-                placeholder="Food Category"
-                {...register("category", { required: true })}
-                className="w-full px-4 py-2.5 border border-gray-400 text-sm rounded-full bg-[#686868] text-white placeholder-gray-100 outline-none"
-              /> */}
               <div className="relative">
                 <div
                   onClick={() => setOpen(!open)}
@@ -107,7 +109,7 @@ const FoodModal = ({ onClose }) => {
                 {/* Dropdown */}
                 {open && (
                   <div className="absolute left-0 right-0 mt-1 bg-[#686868] text-white rounded-xl p-3 space-y-2 shadow-lg z-50">
-                    {categories.map((cat) => (
+                    {categories.map((cat: string) => (
                       <p
                         key={cat}
                         onClick={() => {

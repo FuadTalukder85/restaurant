@@ -1,6 +1,6 @@
-import React from "react";
+import { ButtonFillProps } from "@/types/type";
 
-const ButtonFill = ({ name, onClick }) => {
+const ButtonFill = ({ name, onClick }: ButtonFillProps) => {
   return (
     <button
       onClick={onClick}
